@@ -69,9 +69,9 @@ module.exports = {
         'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
         'aurora-flow': 'auroraFlow 8s ease-in-out infinite',
         'aurora-shift': 'auroraShift 12s ease-in-out infinite',
-        'float': 'float 6s ease-in-out infinite',
+        float: 'float 6s ease-in-out infinite',
         'glow-pulse': 'glowPulse 3s ease-in-out infinite',
-        'text-glow': 'textGlow 2s ease-in-out infinite',
+        'text-glow': 'textGlow 4s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -93,27 +93,28 @@ module.exports = {
           '50%': { boxShadow: '0 0 30px rgba(0, 255, 136, 0.8)' },
         },
         auroraFlow: {
-          '0%, 100%': { 
-            background: 'linear-gradient(45deg, #00ff88, #00d4ff, #8b5cf6, #ec4899)',
+          '0%, 100%': {
+            background:
+              'linear-gradient(45deg, #00ff88, #00d4ff, #8b5cf6, #ec4899)',
             backgroundSize: '400% 400%',
-            backgroundPosition: '0% 50%'
+            backgroundPosition: '0% 50%',
           },
-          '50%': { 
-            backgroundPosition: '100% 50%'
+          '50%': {
+            backgroundPosition: '100% 50%',
           },
         },
         auroraShift: {
-          '0%': { 
+          '0%': {
             filter: 'hue-rotate(0deg)',
-            transform: 'translateX(-100%)'
+            transform: 'translateX(-100%)',
           },
-          '50%': { 
+          '50%': {
             filter: 'hue-rotate(180deg)',
-            transform: 'translateX(0%)'
+            transform: 'translateX(0%)',
           },
-          '100%': { 
+          '100%': {
             filter: 'hue-rotate(360deg)',
-            transform: 'translateX(100%)'
+            transform: 'translateX(100%)',
           },
         },
         float: {
@@ -121,19 +122,22 @@ module.exports = {
           '50%': { transform: 'translateY(-20px)' },
         },
         glowPulse: {
-          '0%, 100%': { 
-            boxShadow: '0 0 20px rgba(0, 255, 136, 0.3), 0 0 40px rgba(0, 255, 136, 0.1)' 
+          '0%, 100%': {
+            boxShadow:
+              '0 0 20px rgba(0, 255, 136, 0.3), 0 0 40px rgba(0, 255, 136, 0.1)',
           },
-          '50%': { 
-            boxShadow: '0 0 30px rgba(0, 255, 136, 0.6), 0 0 60px rgba(0, 255, 136, 0.3)' 
+          '50%': {
+            boxShadow:
+              '0 0 30px rgba(0, 255, 136, 0.6), 0 0 60px rgba(0, 255, 136, 0.3)',
           },
         },
         textGlow: {
-          '0%, 100%': { 
-            textShadow: '0 0 10px rgba(0, 255, 136, 0.5)' 
+          '0%, 100%': {
+            textShadow: '0 0 10px rgba(0, 255, 136, 0.5)',
           },
-          '50%': { 
-            textShadow: '0 0 20px rgba(0, 255, 136, 0.8), 0 0 30px rgba(0, 255, 136, 0.6)' 
+          '50%': {
+            textShadow:
+              '0 0 20px rgba(0, 255, 136, 0.8), 0 0 30px rgba(0, 255, 136, 0.6)',
           },
         },
       },
@@ -143,4 +147,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

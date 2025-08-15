@@ -1,0 +1,59 @@
+# Global owners - these users will be the default owners for everything in the repo
+* @ingjc
+
+# Frontend components and pages
+/components/ @ingjc
+/app/ @ingjc
+
+# Testing files
+/__tests__/ @ingjc
+*.test.ts @ingjc
+*.test.tsx @ingjc
+*.spec.ts @ingjc
+*.spec.tsx @ingjc
+
+# Configuration files
+package.json @ingjc
+package-lock.json @ingjc
+tsconfig.json @ingjc
+next.config.ts @ingjc
+tailwind.config.js @ingjc
+jest.config.js @ingjc
+jest.setup.js @ingjc
+eslint.config.mjs @ingjc
+postcss.config.js @ingjc
+
+# Documentation
+README.md @ingjc
+*.md @ingjc
+
+# GitHub workflows and configurations
+/.github/ @ingjc
+
+# Environment and secrets
+.env* @ingjc
+.env.local @ingjc
+.env.development @ingjc
+.env.production @ingjc
+
+# Build outputs (should be ignored but just in case)
+/.next/ @ingjc
+/out/ @ingjc
+/dist/ @ingjc
+
+# Dependencies
+/node_modules/ @ingjc
+
+# Public assets
+/public/ @ingjc
+
+# API routes
+/app/api/ @ingjc
+
+# Styles
+*.css @ingjc
+*.scss @ingjc
+*.sass @ingjc
+
+# TypeScript types
+*.d.ts @ingjc

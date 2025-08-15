@@ -32,7 +32,9 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 }
 
@@ -40,46 +42,51 @@
   .glass-effect {
     @apply bg-black/20 backdrop-blur-xl border border-aurora-green/30;
   }
-  
+
   .card-hover {
     @apply transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-aurora-green/30 hover:border-aurora-green/50;
   }
-  
+
   .gradient-text {
     @apply bg-gradient-to-r from-aurora-green via-aurora-blue to-aurora-purple bg-clip-text text-transparent animate-text-glow;
+    line-height: 1.2;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
   }
-  
+
   .aurora-bg {
     @apply bg-gradient-to-br from-slate-900 via-black to-slate-900;
   }
-  
+
   .aurora-overlay {
-    background: linear-gradient(45deg, 
-      rgba(0, 255, 136, 0.1) 0%, 
-      rgba(0, 212, 255, 0.1) 25%, 
-      rgba(139, 92, 246, 0.1) 50%, 
-      rgba(236, 72, 153, 0.1) 75%, 
-      rgba(0, 255, 136, 0.1) 100%);
+    background: linear-gradient(
+      45deg,
+      rgba(0, 255, 136, 0.1) 0%,
+      rgba(0, 212, 255, 0.1) 25%,
+      rgba(139, 92, 246, 0.1) 50%,
+      rgba(236, 72, 153, 0.1) 75%,
+      rgba(0, 255, 136, 0.1) 100%
+    );
     background-size: 400% 400%;
     animation: auroraFlow 8s ease-in-out infinite;
   }
-  
+
   .animate-fade-in {
     animation: fadeIn 0.6s ease-in-out;
   }
-  
+
   .animate-slide-up {
     animation: slideUp 0.8s ease-out;
   }
-  
+
   .animate-bounce-in {
     animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
-  
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
-  
+
   .animate-glow-pulse {
     animation: glowPulse 3s ease-in-out infinite;
   }
@@ -124,7 +131,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
   }
   50% {
@@ -133,7 +141,8 @@
 }
 
 @keyframes auroraFlow {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -142,7 +151,8 @@
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -151,20 +161,28 @@
 }
 
 @keyframes glowPulse {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), 0 0 40px rgba(0, 255, 136, 0.1);
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px rgba(0, 255, 136, 0.3),
+      0 0 40px rgba(0, 255, 136, 0.1);
   }
   50% {
-    box-shadow: 0 0 30px rgba(0, 255, 136, 0.6), 0 0 60px rgba(0, 255, 136, 0.3);
+    box-shadow:
+      0 0 30px rgba(0, 255, 136, 0.6),
+      0 0 60px rgba(0, 255, 136, 0.3);
   }
 }
 
 @keyframes textGlow {
-  0%, 100% {
+  0%,
+  100% {
     text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
   }
   50% {
-    text-shadow: 0 0 20px rgba(0, 255, 136, 0.8), 0 0 30px rgba(0, 255, 136, 0.6);
+    text-shadow:
+      0 0 20px rgba(0, 255, 136, 0.8),
+      0 0 30px rgba(0, 255, 136, 0.6);
   }
 }
 
