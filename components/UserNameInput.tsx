@@ -9,6 +9,14 @@ interface UserNameInputProps {
   isVisible: boolean;
 }
 
+// Helper function to safely get localStorage value
+const getLocalStorageValue = (key: string): string | null => {
+  if (typeof window !== 'undefined') {
+    return localStorage.getItem(key);
+  }
+  return null;
+};
+
 export default function UserNameInput({
   onNameSubmit,
   isVisible,
@@ -17,7 +25,7 @@ export default function UserNameInput({
 
   // Pre-fill name when modal opens
   useEffect(() => {
-    if (isVisible) {
+    if (isVisible && typeof window !== 'undefined') {
       const storedName = localStorage.getItem('userName');
       if (storedName) {
         setName(storedName);
@@ -27,16 +35,20 @@ export default function UserNameInput({
 
   useEffect(() => {
     // Check if name is already stored
-    const storedName = localStorage.getItem('userName');
-    if (storedName && !isVisible) {
-      onNameSubmit(storedName);
+    if (typeof window !== 'undefined') {
+      const storedName = localStorage.getItem('userName');
+      if (storedName && !isVisible) {
+        onNameSubmit(storedName);
+      }
     }
   }, [onNameSubmit, isVisible]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (name.trim()) {
-      localStorage.setItem('userName', name.trim());
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('userName', name.trim());
+      }
       onNameSubmit(name.trim());
     }
   };
@@ -59,19 +71,19 @@ export default function UserNameInput({
       >
         <div className='flex justify-between items-center mb-6'>
           <h2 className='text-3xl font-bold gradient-text text-center flex-1'>
-            {localStorage.getItem('userName')
+            {getLocalStorageValue('userName')
               ? 'Change Your Name'
               : 'Welcome to Your Dashboard'}
           </h2>
           <button
-            onClick={() => onNameSubmit(localStorage.getItem('userName') || '')}
+            onClick={() => onNameSubmit(getLocalStorageValue('userName') || '')}
             className='text-gray-400 hover:text-white transition-colors duration-200'
           >
             ✕
           </button>
         </div>
         <p className='text-gray-300 text-center mb-6'>
-          {localStorage.getItem('userName')
+          {getLocalStorageValue('userName')
             ? 'Enter your new name to update your dashboard'
             : 'Please enter your name to personalize your experience'}
         </p>
@@ -83,7 +95,7 @@ export default function UserNameInput({
               value={name}
               onChange={e => setName(e.target.value)}
               placeholder={
-                localStorage.getItem('userName')
+                getLocalStorageValue('userName')
                   ? 'Enter your new name...'
                   : 'Enter your name...'
               }
@@ -99,7 +111,7 @@ export default function UserNameInput({
             disabled={!name.trim()}
             className='w-full px-6 py-3 bg-aurora-green/20 hover:bg-aurora-green/30 disabled:bg-gray-600/20 disabled:cursor-not-allowed text-aurora-green border border-aurora-green/50 rounded-lg transition-all duration-200 font-semibold'
           >
-            {localStorage.getItem('userName') ? 'Update Name' : 'Get Started'}
+            {getLocalStorageValue('userName') ? 'Update Name' : 'Get Started'}
           </motion.button>
         </form>
       </motion.div>

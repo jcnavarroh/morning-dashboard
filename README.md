@@ -4,12 +4,14 @@ A beautiful, personalized morning dashboard built with modern web technologies. 
 
 ## ✨ Features
 
-### 🌍 **Smart Geolocation**
+### 🌍 **Smart Geolocation with Privacy**
 
-- Automatic location detection using Vercel Edge Runtime
-- Fallback to Tromsø, Norway (aurora borealis city) for development
-- Real-time city, country, and region information
-- Country code to full name mapping
+- **Vercel Edge Runtime**: Uses Vercel's built-in geolocation for accurate user location (most privacy-friendly)
+- **User Consent**: Explicit consent dialog for IP-based geolocation fallback
+- **Privacy-First**: Defaults to Tromsø, Norway (aurora borealis city) without user consent
+- **IP-API Fallback**: Optional IP-based geolocation with user permission
+- **Location Display**: Shows city and country name in weather container
+- **Consent Storage**: User preferences saved locally in browser
 
 ### 🌤️ **Live Weather Information**
 

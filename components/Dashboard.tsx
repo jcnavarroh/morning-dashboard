@@ -11,6 +11,7 @@ import QuoteOfTheDay from './QuoteOfTheDay';
 import LoadingSpinner from './ui/LoadingSpinner';
 import ErrorBoundary from './ui/ErrorBoundary';
 import UserNameInput from './UserNameInput';
+import LocationConsent from './LocationConsent';
 
 // Enhanced fetcher with better error handling
 const fetcher = async (url: string) => {
@@ -47,13 +48,18 @@ export default function Dashboard() {
   const greeting = useGreeting();
   const [userName, setUserName] = useState<string>('');
   const [showNameInput, setShowNameInput] = useState(true);
+  const [locationConsent, setLocationConsent] = useState<boolean | null>(null);
+  const [showLocationConsent, setShowLocationConsent] = useState(true);
 
   // 1. Fetch Location Data with retry logic
+  const locationUrl =
+    locationConsent !== null ? `/api/location?useIP=${locationConsent}` : null;
+
   const {
     data: locationData,
     error: locationError,
     mutate: retryLocation,
-  } = useSWR('/api/location', fetcher, {
+  } = useSWR(locationUrl, fetcher, {
     revalidateOnFocus: false,
     revalidateOnReconnect: true,
     errorRetryCount: 3,
@@ -83,7 +89,6 @@ export default function Dashboard() {
     errorRetryInterval: 5000,
   });
 
-  const isLoading = !locationData && !locationError;
   const hasErrors = locationError || weatherError || quoteError;
 
   const handleNameSubmit = (name: string) => {
@@ -91,7 +96,16 @@ export default function Dashboard() {
     setShowNameInput(false);
   };
 
-  if (isLoading) {
+  const handleLocationConsent = (consent: boolean) => {
+    setLocationConsent(consent);
+    setShowLocationConsent(false);
+  };
+
+  // Show loading only when we're waiting for location data after consent
+  const isWaitingForLocation =
+    locationConsent !== null && !locationData && !locationError;
+
+  if (isWaitingForLocation) {
     return (
       <motion.div
         initial={{ opacity: 0 }}
@@ -183,6 +197,11 @@ export default function Dashboard() {
       <UserNameInput
         onNameSubmit={handleNameSubmit}
         isVisible={showNameInput}
+      />
+
+      <LocationConsent
+        onConsent={handleLocationConsent}
+        isVisible={showLocationConsent}
       />
 
       <div className='w-full max-w-6xl mx-auto px-4 py-8 animate-fade-in'>
