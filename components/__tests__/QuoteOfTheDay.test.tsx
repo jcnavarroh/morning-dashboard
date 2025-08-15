@@ -12,7 +12,7 @@ describe('QuoteOfTheDay', () => {
     render(<QuoteOfTheDay data={undefined} error={null} />);
 
     expect(
-      screen.getByText('Fetching inspirational quote...')
+      screen.getByText('Finding the perfect quote...')
     ).toBeInTheDocument();
     expect(screen.getByRole('status')).toBeInTheDocument(); // LoadingSpinner
   });
@@ -30,9 +30,9 @@ describe('QuoteOfTheDay', () => {
   it('renders quote data when available', () => {
     render(<QuoteOfTheDay data={mockQuoteData} error={null} />);
 
-    expect(screen.getByText('Quote of the Day')).toBeInTheDocument();
+    expect(screen.getByText('Inspirational Quote')).toBeInTheDocument();
     expect(screen.getByText(/It's the unknown we fear/)).toBeInTheDocument();
-    expect(screen.getByText('Albus Dumbledore')).toBeInTheDocument();
+    expect(screen.getByText(/Albus Dumbledore/)).toBeInTheDocument();
   });
 
   it('renders quote with proper formatting', () => {
