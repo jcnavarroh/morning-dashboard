@@ -14,8 +14,11 @@ export default function LocationConsent({
   isVisible,
 }: LocationConsentProps) {
   const [hasConsented, setHasConsented] = useState<boolean | null>(null);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+
     // Check if user has already made a choice
     if (typeof window !== 'undefined') {
       const savedConsent = localStorage.getItem('locationConsent');
@@ -34,7 +37,7 @@ export default function LocationConsent({
     onConsent(_consent);
   };
 
-  if (!isVisible || hasConsented !== null) {
+  if (!isVisible || hasConsented !== null || !isClient) {
     return null;
   }
 
