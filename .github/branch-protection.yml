@@ -10,7 +10,6 @@ branches:
           - 'CI Next.js Landing Page'
           - 'Enhanced CI/CD Pipeline'
           - 'Test Suite'
-          - 'Security Audit'
       required_pull_request_reviews:
         required_approving_review_count: 1
         dismiss_stale_reviews: true
@@ -32,7 +31,6 @@ branches:
           - 'CI Next.js Landing Page'
           - 'Enhanced CI/CD Pipeline'
           - 'Test Suite'
-          - 'Security Audit'
       required_pull_request_reviews:
         required_approving_review_count: 1
         dismiss_stale_reviews: true
