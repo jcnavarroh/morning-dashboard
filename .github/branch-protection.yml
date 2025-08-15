@@ -1,0 +1,60 @@
+# Branch Protection Rules Configuration
+# This file defines the protection rules for main branches
+
+branches:
+  - name: main
+    protection:
+      required_status_checks:
+        strict: true
+        contexts:
+          - 'CI Next.js Landing Page'
+          - 'Enhanced CI/CD Pipeline'
+          - 'Test Suite'
+      required_pull_request_reviews:
+        required_approving_review_count: 1
+        dismiss_stale_reviews: true
+        require_code_owner_reviews: false
+        require_last_push_approval: false
+      enforce_admins: false
+      allow_force_pushes: false
+      allow_deletions: false
+      block_creations: false
+      required_conversation_resolution: true
+      lock_branch: false
+      allow_fork_syncing: true
+
+  - name: develop
+    protection:
+      required_status_checks:
+        strict: true
+        contexts:
+          - 'CI Next.js Landing Page'
+          - 'Enhanced CI/CD Pipeline'
+          - 'Test Suite'
+      required_pull_request_reviews:
+        required_approving_review_count: 1
+        dismiss_stale_reviews: true
+        require_code_owner_reviews: false
+        require_last_push_approval: false
+      enforce_admins: false
+      allow_force_pushes: false
+      allow_deletions: false
+      block_creations: false
+      required_conversation_resolution: true
+      lock_branch: false
+      allow_fork_syncing: true
+# Code Owners Configuration
+# This file defines who owns which parts of the codebase
+# Create .github/CODEOWNERS file for this functionality
+
+# Required Status Checks:
+# - CI Next.js Landing Page: Basic CI pipeline
+# - Enhanced CI/CD Pipeline: Advanced CI/CD pipeline with security and performance checks
+
+# Protection Rules:
+# - Strict status checks: All required checks must pass
+# - PR reviews: At least 1 approval required
+# - Stale review dismissal: Outdated reviews are automatically dismissed
+# - Conversation resolution: All conversations must be resolved
+# - No force pushes: Prevents force pushing to protected branches
+# - No deletions: Prevents branch deletion
